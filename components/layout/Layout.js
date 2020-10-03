@@ -19,6 +19,7 @@ const Layout = (props) => {
           }
           body{
             font-family: 'Raleway', sans-serif;
+            margin: 0;
           }
           ul {
             list-style: none;
@@ -38,7 +39,7 @@ const Layout = (props) => {
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap" rel="stylesheet"></link>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>{props.children}</main>
+        <main>{props.children}</main>
     </>
   );
 }
