@@ -4,10 +4,13 @@ import device from '../../../utils/breakpoints';
 const DetailWeatherContainer = styled.div`
   width: 100%;
   background-color: #100E1D;
-  height: 100vh;
+  z-index: 10;
 
   @media ${device.tablet}{
     width: 65%;
+  }
+  @media ${device.laptop}{
+    width: 75%;
   }
 `
 
