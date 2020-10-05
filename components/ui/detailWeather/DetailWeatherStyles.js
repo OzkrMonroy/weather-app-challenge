@@ -56,7 +56,8 @@ export const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding: 2rem 2rem 0;
+    margin-bottom: 2rem;
 
     & .fake-card {
       display: none;
@@ -64,7 +65,16 @@ export const Container = styled.div`
 
     @media ${device.tablet}{
       padding: 0;
-      
+
+      & div:nth-of-type(3){
+        margin-right: 0;
+      }
+      & div:nth-of-type(4){
+        margin-right: 10px;
+      }
+      & div:nth-of-type(5){
+        margin-right: 0;
+      }
       & .fake-card {
         display: block;
         width: 30%;
@@ -73,10 +83,35 @@ export const Container = styled.div`
       }
     }
     @media ${device.laptop}{
+      & div:nth-of-type(3){
+        margin-right: 10px;
+      }
       & .fake-card {
         display: none;
       }
     }
+  }
+  & .today-hightlights-title {
+    text-align: center;
+    color: #E7E7EB;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 2rem;
 
+    @media ${device.tablet}{
+      text-align: start;
+    }
+  }
+  & .today-hightlights-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 1.3rem;
+    margin-bottom: 2rem;
+
+    @media ${device.tablet}{
+      padding: 0;
+    }
   }
 `
