@@ -39,6 +39,8 @@ export const ActionsWeatherContainer = styled.div`
     color: #E7E7EB;
     font-weight: 500;
     letter-spacing: .5px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
   }
   & .location-button {
     border-radius: 50%;

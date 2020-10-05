@@ -1,4 +1,3 @@
-import { css } from '@emotion/core';
 import React from 'react'
 import { ActionsWeatherContainer, ImageResumeContainer, ResumeInformationContainer, ResumeWeatherContainer } from './ResumeStyles';
 
