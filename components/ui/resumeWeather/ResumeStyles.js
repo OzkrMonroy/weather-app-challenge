@@ -22,6 +22,7 @@ export const ActionsWeatherContainer = styled.div`
   padding: 2rem;
   position: absolute;
   width: 100%;
+  z-index: 5;
 
   & button {
     border: none;
@@ -32,7 +33,6 @@ export const ActionsWeatherContainer = styled.div`
 
   & button:hover {
     cursor: pointer;
-    color: black;
   }
 
   & .search-button {
@@ -54,36 +54,41 @@ export const ActionsWeatherContainer = styled.div`
 export const ImageResumeContainer = styled.div`
   width: 100%;
   position: relative;
-  height: 50vh;
+  margin-top: 5rem;
 
   @media ${device.landscapeMobile} {
     height: 110vh;
   }
 
   & .background-image {
-    top: 20%;
+    top: 0;
     left: -20%;
     opacity: .1;
     position: absolute;
     width: 147%;
-    z-index: 1;  
+    z-index: 1;
   }
   & .weather-image {
-    width: 35%;
-    position: absolute;
-    top: 40%;
-    left: 35%;
+    width: 40%;
+    display: block;
+    margin: 4rem auto 3rem;
+
+    @media ${device.landscapeMobile}{
+      margin-bottom: 4rem;
+    }
+    @media ${device.laptop}{
+      margin-bottom: 5rem;
+    }
   }
 `
 export const ResumeInformationContainer = styled.div`
   width: 100%;
-  height: 50vh;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding-bottom: 2rem;
 
-  @media ${device.landscapeMobile} {
-    height: 100vh;
+  @media ${device.tablet}{
+    padding-top: 0;
   }
 
   & p {
@@ -95,16 +100,37 @@ export const ResumeInformationContainer = styled.div`
     font-size: 85px;
     margin: 0 0 1rem;
     color: #E7E7EB;
+    font-weight: 500;
+
+    @media ${device.laptop}{
+      font-size: 100px;
+      margin: 0 0 6rem;
+
+      & span {
+        font-size: 50px;
+      }
+    }
   }
   & .temperature span {
     font-size: 35px;
+    font-weight: 300;
   }
 
   & .weather-text {
     font-size: 25px;
+    font-weight: 700;
+
+     @media ${device.laptop}{
+      font-size: 36px;
+      margin: 0 0 6rem;
+     }
   }
   & .date-text, & .location-text {
     font-size: 14px;
+
+    @media ${device.laptop}{
+      font-size: 18px;
+     }
   }
 `
 

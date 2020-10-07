@@ -3,7 +3,7 @@ import device from "../../../utils/breakpoints";
 
 export const HightLightCardContainer = styled.div`
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 2rem;
   background-color: #1E213A;
   margin-bottom: 2rem;
 
@@ -20,6 +20,7 @@ export const HightLightCardContainer = styled.div`
     text-align: center;
     color: #E7E7EB;
     margin-bottom: 0;
+    margin-top: 0;
   }
   & .card-information {
     font-size: 64px;
@@ -38,5 +39,40 @@ export const HightLightCardContainer = styled.div`
     font-weight: 500;
     text-align: center;
     color: #E7E7EB;
+  }
+  & .percentages-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & p {
+      color: #E7E7EB;
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+  & .progress-bar {
+    height: 8px;
+    background-color: #E7E7EB;
+    border-radius: 10px;
+    position: relative;
+
+    &::after {
+       content: '';
+       display: block;
+       background:  #FFEC65;
+       width: 50%;
+       height: 100%;
+       border-radius: 6px;
+    }
+    &::before {
+      content: '%';
+      color: #E7E7EB;
+      font-size: 12px;
+      font-weight: 700;
+      position: absolute;
+      top: 10px;
+      right: 0;
+    }
   }
 `
