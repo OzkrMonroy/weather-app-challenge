@@ -1,7 +1,10 @@
 import React from 'react'
 import { DailyWeatherCardContainer } from './DailyWeatherStyles';
 
-const DailyWeatherCard = () => {
+const DailyWeatherCard = ({forecast}) => {
+
+  console.log(forecast);
+
   return (
     <DailyWeatherCardContainer>
       <p className="text">Tomorrow</p>

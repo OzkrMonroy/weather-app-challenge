@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Form from '../Form/Form';
 import { ActionsWeatherContainer, ImageResumeContainer, ResumeInformationContainer, ResumeWeatherContainer } from './ResumeStyles';
 
-const ResumeWeather = () => {
+const ResumeWeather = ({todayWeather, unitOption}) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const showForm = () => {
@@ -22,10 +22,10 @@ const ResumeWeather = () => {
         <img className="weather-image" src="/img/Shower.png" alt="cloud background"/>
       </ImageResumeContainer>
       <ResumeInformationContainer>
-        <p className="temperature">15<span>°C</span></p>
-        <p className="weather-text">Shower</p>
+        <p className="temperature">{todayWeather.currentTemperature}<span>°{unitOption}</span></p>
+        <p className="weather-text">{todayWeather.weather}</p>
         <p className="date-text">Today - Fri. 5 Jun</p>
-        <p className="location-text">Guatemala</p>
+        <p className="location-text">{todayWeather.locationName}</p>
       </ResumeInformationContainer>
       <Form isVisible={isFormVisible} setVisible={showForm}/>
     </ResumeWeatherContainer>
