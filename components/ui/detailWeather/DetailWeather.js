@@ -3,7 +3,7 @@ import DailyWeatherCard from "../dayliWeatherCard/DailyWeatherCard";
 import HightLigthsCard from "../HightLightsCard/HightLightsCard";
 import { Container, DetailWeatherContainer } from "./DetailWeatherStyles";
 
-const DetailWeather = ({hightLights, forecastsWeather, setUnitOption}) => {
+const DetailWeather = ({hightLights, forecastsWeather, unitOption, setUnitOption}) => {
   return (
     <DetailWeatherContainer>
       <Container>
@@ -17,7 +17,7 @@ const DetailWeather = ({hightLights, forecastsWeather, setUnitOption}) => {
         </div>
         <div className="daily-weather-container">
           {forecastsWeather.map((forecast, index) => (
-            <DailyWeatherCard key={index} forecast={forecast}/>
+            <DailyWeatherCard key={index} forecast={forecast} unitOption={unitOption}/>
           ))}
           <div className="fake-card"></div>
         </div>

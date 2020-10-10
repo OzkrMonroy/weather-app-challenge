@@ -3,16 +3,17 @@ import Layout from "../components/layout/Layout";
 import Container from "../components/ui/containerApp/ContainerStyles";
 import DetailWeather from "../components/ui/detailWeather/DetailWeather";
 import ResumeWeather from "../components/ui/resumeWeather/ResumeWeather";
+import { initialForecastWeather, initialHightLights } from '../utils/initialState'
 
 export default function Home() {
   const [todayWeather, setTodayWeather] = useState({});
-  const [hightlightsToday, setHightlightsToday] = useState([]);
-  const [forecastsForFiveDays, setForecastsForFiveDays] = useState([]);
+  const [hightlightsToday, setHightlightsToday] = useState(initialHightLights);
+  const [forecastsForFiveDays, setForecastsForFiveDays] = useState(initialForecastWeather);
   const [unitOption, setUnitOption] = useState("C");
 
   useEffect(() => {
     const url =
-      "https://api.aerisapi.com/batch/guatemala,%20guatemala?&format=json&client_id=zD3HHXPiRnxjq4cm42IGr&client_secret=2YhJRrg2JfMefcEqKAkjQ9zhyid3zfe6kUzNrTXt&requests=/conditions,/forecasts%3Ffilter=day%26limit=5%26from=tomorrow";
+      "https://api.aerisapi.com/batch/los%20ángeles,usa?&format=json&client_id=zD3HHXPiRnxjq4cm42IGr&client_secret=2YhJRrg2JfMefcEqKAkjQ9zhyid3zfe6kUzNrTXt&requests=/conditions,/forecasts%3Ffilter=day%26limit=5%26from=tomorrow";
 
     fetch(url)
       .then(function (response) {
@@ -22,7 +23,6 @@ export default function Home() {
         if (!json.success) {
           console.log("Oh no!");
         } else {
-          console.log(json);
           const { weatherPrimary, windSpeedMPH, humidity, visibilityMI, pressureMB, } = json.response.responses[0].response[0].periods[0];
 
           const currentTemperature = json.response.responses[0].response[0].periods[0][`temp${unitOption}`].toFixed();
@@ -35,12 +35,13 @@ export default function Home() {
             weather: weatherPrimary,
             locationName,
           });
-          setHightlightsToday([
-            { title: "Wind status", data: windSpeedMPH, showWind: true, id: 'windy', unit: 'mph' },
-            { title: "Humidity", data: humidity, showBar: true, id: 'humidity', unit: '%'},
-            { title: "Visibility", data: visibilityMI, id: 'visibility', unit: 'miles' },
-            { title: "Wind status", data: pressureMB, id: 'windStatus', unit: 'mb' },
-          ]);
+
+          initialHightLights[0].data = windSpeedMPH;
+          initialHightLights[1].data = humidity;
+          initialHightLights[2].data = visibilityMI;
+          initialHightLights[3].data = pressureMB;
+
+          setHightlightsToday(initialHightLights);
           setForecastsForFiveDays(forecastsWeather);
         }
       });
@@ -54,6 +55,7 @@ export default function Home() {
           hightLights={hightlightsToday}
           forecastsWeather={forecastsForFiveDays}
           setUnitOption={setUnitOption}
+          unitOption={unitOption}
         />
       </Container>
     </Layout>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { DailyWeatherCardContainer } from './DailyWeatherStyles';
 
-const DailyWeatherCard = ({forecast}) => {
-
-  console.log(forecast);
+const DailyWeatherCard = ({forecast, unitOption}) => {
+  const minTemp = forecast[`minTemp${unitOption}`]
+  const maxTemp = forecast[`maxTemp${unitOption}`]
 
   return (
     <DailyWeatherCardContainer>
@@ -12,11 +12,10 @@ const DailyWeatherCard = ({forecast}) => {
         <img src="/img/HeavyCloud.png" alt="heavy cloud" className="card-image"/>
       </div>
       <div className="temperature-container text">
-        <p>16°C</p>
-        <p className="secondary-color">11°C</p>
+        <p>{maxTemp}°C</p>
+        <p className="secondary-color">{minTemp}°C</p>
       </div>
     </DailyWeatherCardContainer>
   );
 }
- 
 export default DailyWeatherCard;

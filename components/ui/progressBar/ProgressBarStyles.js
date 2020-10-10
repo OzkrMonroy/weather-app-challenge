@@ -26,6 +26,7 @@ export const ProgressBarContainer = styled.div`
       width: ${(props) => props.percentage};
       height: 100%;
       border-radius: 6px;
+      transition: width 1s ease;
     }
     &::before {
       content: "%";

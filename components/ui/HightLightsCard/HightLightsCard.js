@@ -12,5 +12,5 @@ const HightLigthsCard = ({hightLight}) => {
     </HightLightCardContainer>
   );
 }
- 
+
 export default HightLigthsCard;
