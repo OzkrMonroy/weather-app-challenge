@@ -5,6 +5,7 @@ import { Container, FormContainer } from "./FormStyles";
 const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
+  const [previousSearches, setPreviousSearches] = useState([]);
 
   const handleSearchByText = (e) => {
     e.preventDefault();
@@ -12,6 +13,11 @@ const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
     if (city.trim() === "" && country.trim() === "") return;
 
     getWeatherFunction(city.trim(), country.trim());
+    setPreviousSearches([
+      ...previousSearches,
+      { city: city.trim(), country: country.trim() },
+    ]);
+
     setVisible();
     setCity("");
     setCountry("");
@@ -38,7 +44,11 @@ const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
         />
         <input type="submit" value="Search" className="form-button" />
       </FormContainer>
-      <ListResult setVisible={setVisible} />
+      <ListResult
+        setVisible={setVisible}
+        previousSearches={previousSearches}
+        getWeatherFunction={getWeatherFunction}
+      />
     </Container>
   );
 };

@@ -36,23 +36,12 @@ export default function Home() {
         if (!json.success) {
           console.log("Oh no!");
         } else {
-          console.log((json.response));
-          const {
-            weatherPrimary,
-            windSpeedMPH,
-            humidity,
-            visibilityMI,
-            pressureMB,
-          } = json.response.responses[0].response[0].periods[0];
+          const { weatherPrimary, windSpeedMPH, humidity, visibilityMI, pressureMB, icon } = json.response.responses[0].response[0].periods[0];
 
-          const currentTemperature = json.response.responses[0].response[0].periods[0][
-            `temp${unitOption}`
-          ].toFixed();
-          const locationName =
-            json.response.responses[0].response[0].profile.tz;
+          const currentTemperature = json.response.responses[0].response[0].periods[0][`temp${unitOption}`].toFixed();
+          const locationName = json.response.responses[0].response[0].profile.tz;
 
-          const forecastsWeather =
-            json.response.responses[1].response[0].periods;
+          const forecastsWeather = json.response.responses[1].response[0].periods;
 
           initialHightLights[0].data = windSpeedMPH;
           initialHightLights[1].data = humidity;
@@ -63,6 +52,7 @@ export default function Home() {
             currentTemperature,
             weather: weatherPrimary,
             locationName,
+            icon
           });
           setHightlightsToday(initialHightLights);
           setForecastsForFiveDays(forecastsWeather);
