@@ -38,41 +38,31 @@ export const Container = styled.div`
 `
 export const FormContainer = styled.form`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
 
-  & .search-input-container {
-    width: 68%;
-    display: flex;
-    border: 1px solid #E7E7EB;
-    padding: .9rem;
-
-    img {
-      width: 16px;
-    }
-
-    & input {
-      width: 90%;
-      color: #616475;
-      background: none;
-      border: none;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      padding-left: 10px;
-    }
-    & input:focus {
-      outline: none;
-    }
+  & input[type="text"] {
+    width: 100%;
+    color: #616475;
+    background: none;
+    border: 1px solid #616475;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  & input:focus {
+    outline: none;
   }
 
   & .form-button {
-    width: 30%;
+    width: 100%;
     border: none;
     background-color: #3C47E9;
     color: #fff;
-    padding: 1.1rem;
+    padding: 1rem;
     font-family: 'Raleway' , sans-serif;
     font-weight: 700;
   }

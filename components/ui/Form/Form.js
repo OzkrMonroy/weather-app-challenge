@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import ListResult from "../ListResult/ListResult";
 import { Container, FormContainer } from "./FormStyles";
 
-const Form = ({ isVisible, setVisible }) => {
+const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
 
-  const handleSearchByText = e => {
-    e.preventDefault()
-    setVisible()
-  }
+  const handleSearchByText = (e) => {
+    e.preventDefault();
+
+    if (city.trim() === "" && country.trim() === "") return;
+
+    getWeatherFunction(city.trim(), country.trim());
+    setVisible();
+    setCity("");
+    setCountry("");
+  };
   return (
     <Container isVisible={isVisible}>
       <div className="button-container">
@@ -16,13 +24,21 @@ const Form = ({ isVisible, setVisible }) => {
         </button>
       </div>
       <FormContainer onSubmit={handleSearchByText}>
-        <div className="search-input-container">
-          <img src="/img/search.svg" alt="search input" />
-          <input type="text" placeholder="search location" />
-        </div>
+        <input
+          type="text"
+          placeholder="search city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="search country"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        />
         <input type="submit" value="Search" className="form-button" />
       </FormContainer>
-      <ListResult setVisible={setVisible}/>
+      <ListResult setVisible={setVisible} />
     </Container>
   );
 };

@@ -2,18 +2,26 @@ import React, { useState } from 'react'
 import Form from '../Form/Form';
 import { ActionsWeatherContainer, ImageResumeContainer, ResumeInformationContainer, ResumeWeatherContainer } from './ResumeStyles';
 
-const ResumeWeather = ({todayWeather, unitOption}) => {
+const ResumeWeather = ({todayWeather, unitOption, getWeatherFunction}) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const showForm = () => {
     setIsFormVisible(!isFormVisible)
   }
 
+  const getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      getWeatherFunction(position.coords.latitude, position.coords.longitude)
+    }, error => {
+      console.log('No se obtuvo los permisos', error);
+    })
+  }
+
   return (
     <ResumeWeatherContainer>
       <ActionsWeatherContainer>
         <button type="button" className="search-button" onClick={showForm}>Search for places</button>
-        <button type="button" className="location-button">
+        <button type="button" className="location-button" onClick={getCurrentLocation}>
           <img src="/img/location.svg" alt="location button"/>
         </button>
       </ActionsWeatherContainer>
@@ -27,7 +35,7 @@ const ResumeWeather = ({todayWeather, unitOption}) => {
         <p className="date-text">Today - Fri. 5 Jun</p>
         <p className="location-text">{todayWeather.locationName}</p>
       </ResumeInformationContainer>
-      <Form isVisible={isFormVisible} setVisible={showForm}/>
+      <Form isVisible={isFormVisible} setVisible={showForm} getWeatherFunction={getWeatherFunction}/>
     </ResumeWeatherContainer>
   );
 }
