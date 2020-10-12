@@ -34,7 +34,7 @@ export const ImageResumeContainer = styled.div`
   margin-top: 5rem;
 
   @media ${device.landscapeMobile} {
-    height: 110vh;
+    height: 100vh;
   }
 
   & .background-image {
@@ -76,13 +76,13 @@ export const ResumeInformationContainer = styled.div`
   
   & .temperature {
     font-size: 85px;
-    margin: 0 0 1rem;
+    margin-bottom: 1rem;
     color: #E7E7EB;
     font-weight: 500;
 
     @media ${device.laptop}{
       font-size: 100px;
-      margin: 0 0 6rem;
+      margin-bottom: 6rem;
 
       & span {
         font-size: 50px;
@@ -97,18 +97,25 @@ export const ResumeInformationContainer = styled.div`
   & .weather-text {
     font-size: 25px;
     font-weight: 700;
+    margin-bottom: 5rem;
 
      @media ${device.laptop}{
       font-size: 36px;
-      margin: 0 0 6rem;
+      margin-bottom:6rem;
      }
   }
-  & .date-text, & .location-text {
+  & .location-date-container {
+    width: 100%;
+    position: absolute;
+    bottom: 1rem;
+
+    & .date-text, & .location-text {
     font-size: 14px;
 
     @media ${device.laptop}{
       font-size: 18px;
      }
+  }
   }
 `
 

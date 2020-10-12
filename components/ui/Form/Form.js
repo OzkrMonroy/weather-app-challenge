@@ -32,13 +32,13 @@ const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
       <FormContainer onSubmit={handleSearchByText}>
         <input
           type="text"
-          placeholder="search city"
+          placeholder="New York"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         <input
           type="text"
-          placeholder="search country"
+          placeholder="USA"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
         />

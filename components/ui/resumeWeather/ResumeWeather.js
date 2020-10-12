@@ -60,8 +60,10 @@ const ResumeWeather = ({ todayWeather, unitOption, getWeatherFunction }) => {
           <span>°{unitOption}</span>
         </p>
         <p className="weather-text">{todayWeather.weather}</p>
-        <p className="date-text">Today - {dateArray[0]}. {dateArray[2]} {dateArray[1]}</p>
-        <p className="location-text">{todayWeather.locationName}</p>
+        <div className="location-date-container">
+          <p className="date-text">Today - {dateArray[0]}. {dateArray[2]} {dateArray[1]}</p>
+          <p className="location-text">{todayWeather.locationName}</p>
+        </div>
       </ResumeInformationContainer>
       <Form
         isVisible={isFormVisible}
