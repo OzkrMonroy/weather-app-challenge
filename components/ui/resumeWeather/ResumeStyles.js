@@ -9,7 +9,7 @@ export const ResumeWeatherContainer = styled.div`
   position: relative;
 
   @media ${device.tablet}{
-    width: 35%;
+    width: 30%;
   }
   @media ${device.laptop}{
     width: 25%;
@@ -24,31 +24,8 @@ export const ActionsWeatherContainer = styled.div`
   width: 100%;
   z-index: 5;
 
-  & button {
-    border: none;
-    background-color: #88869D;
-    padding: .6rem;
-    box-shadow: 2px 3px 3px 1px #000;
-  }
-
-  & button:hover {
-    cursor: pointer;
-  }
-
-  & .search-button {
-    color: #E7E7EB;
-    font-weight: 500;
-    letter-spacing: .5px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 500;
-  }
-  & .location-button {
-    border-radius: 50%;
-
-    & img {
-      width: 20px;
-      height: 20px;
-    }
+  @media ${device.tablet}{
+    padding: 2rem 1rem;
   }
 `
 export const ImageResumeContainer = styled.div`
@@ -74,6 +51,7 @@ export const ImageResumeContainer = styled.div`
     margin: 4rem auto 3rem;
 
     @media ${device.landscapeMobile}{
+      width: 30%;
       margin-bottom: 4rem;
     }
     @media ${device.laptop}{

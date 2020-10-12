@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import getImageToShow from "../../../utils/getImageToShow";
+import { Button } from "../button/Button";
 import Form from "../Form/Form";
 import { ActionsWeatherContainer, ImageResumeContainer, ResumeInformationContainer, ResumeWeatherContainer } from "./ResumeStyles";
 
@@ -7,6 +8,10 @@ const ResumeWeather = ({ todayWeather, unitOption, getWeatherFunction }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const imageResource = getImageToShow(todayWeather.icon);
+  const date = new Date()
+  const dateArray =  date.toDateString().split(" ");
+
+  const currentTemp = todayWeather[`temp${unitOption}`].toFixed();
   
   const showForm = () => {
     setIsFormVisible(!isFormVisible);
@@ -26,16 +31,16 @@ const ResumeWeather = ({ todayWeather, unitOption, getWeatherFunction }) => {
   return (
     <ResumeWeatherContainer>
       <ActionsWeatherContainer>
-        <button type="button" className="search-button" onClick={showForm}>
+        <Button type="button" className="search-button" onClick={showForm}>
           Search for places
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
-          className="location-button"
+          className="rounded"
           onClick={getCurrentLocation}
         >
           <img src="/img/location.svg" alt="location button" />
-        </button>
+        </Button>
       </ActionsWeatherContainer>
       <ImageResumeContainer>
         <img
@@ -51,11 +56,11 @@ const ResumeWeather = ({ todayWeather, unitOption, getWeatherFunction }) => {
       </ImageResumeContainer>
       <ResumeInformationContainer>
         <p className="temperature">
-          {todayWeather.currentTemperature}
+          {currentTemp}
           <span>°{unitOption}</span>
         </p>
         <p className="weather-text">{todayWeather.weather}</p>
-        <p className="date-text">Today - Fri. 5 Jun</p>
+        <p className="date-text">Today - {dateArray[0]}. {dateArray[2]} {dateArray[1]}</p>
         <p className="location-text">{todayWeather.locationName}</p>
       </ResumeInformationContainer>
       <Form

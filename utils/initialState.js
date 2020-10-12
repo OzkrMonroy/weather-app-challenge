@@ -1,3 +1,10 @@
+export const initialTodayWeather = {
+  tempC: 0,
+  tempF: 0,
+  weather: 'N/A',
+  locationName: 'N/A',
+  icon: ''
+}
 export const initialHightLights = [
   {
     title: "Wind status",

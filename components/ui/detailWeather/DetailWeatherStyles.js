@@ -7,7 +7,7 @@ export const DetailWeatherContainer = styled.div`
   z-index: 10;
 
   @media ${device.tablet}{
-    width: 65%;
+    width: 70%;
   }
   @media ${device.laptop}{
     width: 75%;
@@ -19,7 +19,7 @@ export const Container = styled.div`
   padding-top: 2rem;
 
   @media ${device.tablet}{
-    width: 75%;
+    width: 85%;
   }
 
   & .temperature-units-options {
@@ -29,26 +29,6 @@ export const Container = styled.div`
       display:flex;
       justify-content: flex-end;
       margin-bottom: 2rem;
-    }
-
-    & button {
-      border: none;
-      background-color: #88869D;
-      padding: .6rem .83rem .65rem .82rem;
-      box-shadow: 2px 3px 3px 1px #000;
-      border-radius: 50%;
-      font-size: 14px;
-      text-align: center;
-      font-family: 'Raleway', sans-serif;
-      font-weight: 700;
-    }
-
-    & .celcius-option {
-      margin-right: 10px;
-      background-color: #E7E7EB;
-    }
-    & .fahrenheit-option {
-      color: #E7E7EB;
     }
   }
   & .daily-weather-container {

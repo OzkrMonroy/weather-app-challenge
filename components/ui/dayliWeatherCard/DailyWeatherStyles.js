@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import device from "../../../utils/breakpoints";
 
 export const DailyWeatherCardContainer = styled.div`
-  height: 177px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   background-color: #1e213a;
@@ -27,26 +27,11 @@ export const DailyWeatherCardContainer = styled.div`
   }
   & .image-container {
     height: 50%;
-    position: relative;
-    text-align: center;
 
     & .card-image {
-      position: absolute;
-      top: -25px;
+      height: 100%;
       width: 100%;
-      left: -20px;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-
-      @media ${device.landscapeMobile}{
-        top: -25px;
-        width: 50%;
-        left: -20px;
-      }
-      @media ${device.tablet}{
-        width: 85%;
-      }
+      object-fit: contain;
     }
   }
   & .temperature-container {

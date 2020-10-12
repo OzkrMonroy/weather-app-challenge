@@ -19,10 +19,14 @@ export const HightLightCardContainer = styled.div`
     font-weight: 500;
     text-align: center;
     color: #E7E7EB;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     margin-top: 0;
   }
   & .card-information {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     font-size: 64px;
     font-weight: 700;
     text-align: center;
