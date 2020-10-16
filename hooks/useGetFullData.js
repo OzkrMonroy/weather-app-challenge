@@ -55,7 +55,7 @@ const useGetFullWeatherData = () => {
       });
       setTimeout(() => {
         setError(initialErrorState);
-      }, 3000);
+      }, 4000);
     }
   };
 

@@ -10,7 +10,7 @@ const AlertConainer = styled.div`
   right: 0;
   z-index: 20;
   text-align: center;
-  transition: all 1.3s ease-in-out;
+  transition: top 1.3s ease-in-out;
 `
 
 export default AlertConainer

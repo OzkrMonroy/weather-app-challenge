@@ -3,7 +3,7 @@ import useGetFormatDate from "../../../hooks/useGetFormatDate";
 import getImageToShow from "../../../utils/getImageToShow";
 import getWeatherDataByUserLocation from "../../../utils/getWeatherDataByUserLocation";
 import { Button } from "../button/Button";
-import { ActionsWeatherContainer, ImageResumeContainer, ResumeInformationContainer, ResumeWeatherContainer } from "./ResumeStyles";
+import { ActionsWeatherContainer, ImageResumeContainer, ResumeInformationContainer, ResumeWeatherContainer } from "./Styles";
 import Form from "../Form/Form";
 
 const ResumeWeather = ({ fullWeatherData, unitOption, getWeatherFunction, setError }) => {

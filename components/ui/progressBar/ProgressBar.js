@@ -1,5 +1,5 @@
 import React from "react";
-import { ProgressBarContainer } from "./ProgressBarStyles";
+import { ProgressBarContainer } from "./Styles";
 
 const ProgressBar = ({ percentage }) => {
   return (

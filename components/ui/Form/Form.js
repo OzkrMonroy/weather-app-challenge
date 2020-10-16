@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ListResult from "../ListResult/ListResult";
-import { Container, Error, FormContainer } from "./FormStyles";
+import { Container, Error, FormContainer } from "./Styles";
 
 const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
   const [city, setCity] = useState("");

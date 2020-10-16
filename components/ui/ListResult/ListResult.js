@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItem } from "./ListResultStyles";
+import { ListItem } from "./Styles";
 
 const ListResult = ({ setVisible, previousSearches, getWeatherFunction }) => {
 

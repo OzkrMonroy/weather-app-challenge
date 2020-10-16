@@ -1,7 +1,7 @@
 import React from 'react'
 import useGetFormatDate from '../../../hooks/useGetFormatDate';
 import getImageToShow from '../../../utils/getImageToShow';
-import { DailyWeatherCardContainer } from './DailyWeatherStyles';
+import { DailyWeatherCardContainer } from './Styles';
 
 const DailyWeatherCard = ({forecast, unitOption}) => {
   const { formatedDate } = useGetFormatDate(forecast.validTime)

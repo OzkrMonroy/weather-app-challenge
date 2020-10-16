@@ -1,6 +1,6 @@
 import React from 'react';
 import ProgressBar from '../progressBar/ProgressBar';
-import { HightLightCardContainer } from './HightLightCardStyles';
+import { HightLightCardContainer } from './Styles';
 
 const HightLigthsCard = ({hightLight}) => {
   return (

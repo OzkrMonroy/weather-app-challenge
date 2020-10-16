@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../button/Button";
 import DailyWeatherCard from "../dayliWeatherCard/DailyWeatherCard";
 import HightLigthsCard from "../HightLightsCard/HightLightsCard";
-import { Container, DetailWeatherContainer } from "./DetailWeatherStyles";
+import { Container, DetailWeatherContainer } from "./Styles";
 
 const DetailWeather = ({ fullWeatherData, unitOption, setUnitOption }) => {
   const { hightlightsToday, forecastsForFiveDays, locationName } = fullWeatherData;
