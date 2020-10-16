@@ -1,9 +1,9 @@
 export const initialFullWeatherData = {
+  locationName: 'N/A',
   todayWeather: {
     tempC: 0,
     tempF: 0,
     weather: 'N/A',
-    locationName: 'N/A',
     icon: ''
   },
   hightlightsToday: [
@@ -31,4 +31,9 @@ export const initialFullWeatherData = {
     {minTempC: 0, maxTempC: 0, minTempF: 0, maxTempF: 0},
     {minTempC: 0, maxTempC: 0, minTempF: 0, maxTempF: 0},
   ]
+}
+
+export const initialErrorState = {
+  status: false,
+  message: ""
 }

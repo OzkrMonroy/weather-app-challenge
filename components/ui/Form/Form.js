@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import ListResult from "../ListResult/ListResult";
-import { Container, FormContainer } from "./FormStyles";
+import { Container, Error, FormContainer } from "./FormStyles";
 
 const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
+  const [error, setError] = useState(false)
   const [previousSearches, setPreviousSearches] = useState([]);
 
   const handleSearchByText = (e) => {
     e.preventDefault();
 
-    if (city.trim() === "" && country.trim() === "") return;
+    const cityToSearch = city.trim();
+    const countryToSearch = country.trim();
 
-    getWeatherFunction(city.trim(), country.trim());
-    setPreviousSearches([
-      ...previousSearches,
-      { city: city.trim(), country: country.trim() },
-    ]);
+    if (cityToSearch === "" || countryToSearch === "") {
+      setError(true);
+      
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+
+      return
+    };
+
+    getWeatherFunction(cityToSearch, countryToSearch);
+    const newPreviousSearches = [...previousSearches, { city: cityToSearch, country: countryToSearch}].reverse()
+    setPreviousSearches(newPreviousSearches);
 
     setVisible();
     setCity("");
@@ -42,6 +52,7 @@ const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
           value={country}
           onChange={(e) => setCountry(e.target.value)}
         />
+        {error && <Error> <p>Fill out all of the fields, please.</p> </Error>}
         <input type="submit" value="Search" className="form-button" />
       </FormContainer>
       <ListResult

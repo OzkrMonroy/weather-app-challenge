@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import useGetFormatDate from "../../../hooks/useGetFormatDate";
 import getImageToShow from "../../../utils/getImageToShow";
+import getWeatherDataByUserLocation from "../../../utils/getWeatherDataByUserLocation";
 import { Button } from "../button/Button";
-import Form from "../Form/Form";
 import { ActionsWeatherContainer, ImageResumeContainer, ResumeInformationContainer, ResumeWeatherContainer } from "./ResumeStyles";
+import Form from "../Form/Form";
 
-const ResumeWeather = ({ todayWeather, unitOption, getWeatherFunction }) => {
+const ResumeWeather = ({ fullWeatherData, unitOption, getWeatherFunction, setError }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
-
+  const { todayWeather, locationName } = fullWeatherData
+  const { formatedDate } = useGetFormatDate();
   const imageResource = getImageToShow(todayWeather.icon);
-  const date = new Date()
-  const dateArray =  date.toDateString().split(" ");
 
   const currentTemp = todayWeather[`temp${unitOption}`].toFixed();
   
@@ -18,14 +19,7 @@ const ResumeWeather = ({ todayWeather, unitOption, getWeatherFunction }) => {
   };
 
   const getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        getWeatherFunction(position.coords.latitude, position.coords.longitude);
-      },
-      (error) => {
-        console.log("No se obtuvo los permisos", error);
-      }
-    );
+    getWeatherDataByUserLocation(getWeatherFunction, setError)
   };
 
   return (
@@ -61,8 +55,8 @@ const ResumeWeather = ({ todayWeather, unitOption, getWeatherFunction }) => {
         </p>
         <p className="weather-text">{todayWeather.weather}</p>
         <div className="location-date-container">
-          <p className="date-text">Today - {dateArray[0]}. {dateArray[2]} {dateArray[1]}</p>
-          <p className="location-text">{todayWeather.locationName}</p>
+          <p className="date-text">Today - {formatedDate}</p>
+          <p className="location-text">{locationName}</p>
         </div>
       </ResumeInformationContainer>
       <Form

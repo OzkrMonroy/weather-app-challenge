@@ -70,3 +70,9 @@ export const FormContainer = styled.form`
     cursor: pointer;
   }
 `
+
+export const Error = styled.div`
+  color: #a09fb1;
+  text-align: center;
+  margin-bottom: 1rem;
+`
