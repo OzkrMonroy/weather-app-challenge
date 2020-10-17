@@ -9,6 +9,7 @@ export const initialFullWeatherData = {
   hightlightsToday: [
     {
       title: "Wind status",
+      windDir: "N/A",
       data: 0,
       showWind: true,
       id: "windy",

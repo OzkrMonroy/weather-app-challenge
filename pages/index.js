@@ -11,7 +11,7 @@ export default function Home() {
   const {fullWeatherData, error, setError, getFullWeatherDataFromApi} = useGetFullWeatherData();
 
   useEffect(() => {
-    getFullWeatherDataFromApi();
+    getFullWeatherDataFromApi()
   }, []);
 
   return (

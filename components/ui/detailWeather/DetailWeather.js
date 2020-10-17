@@ -44,6 +44,9 @@ const DetailWeather = ({ fullWeatherData, unitOption, setUnitOption }) => {
             ))}
           </div>
         </div>
+        <div className="info-container">
+          <p>Oscar Monroy @ DevChallenges.io</p>
+        </div>
       </Container>
     </DetailWeatherContainer>
   );

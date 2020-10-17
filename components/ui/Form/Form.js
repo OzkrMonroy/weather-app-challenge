@@ -25,7 +25,9 @@ const Form = ({ isVisible, setVisible, getWeatherFunction }) => {
     };
 
     getWeatherFunction(cityToSearch, countryToSearch);
-    const newPreviousSearches = [...previousSearches, { city: cityToSearch, country: countryToSearch}].reverse()
+    
+    const newSearch = { city: cityToSearch, country: countryToSearch}
+    const newPreviousSearches = [...previousSearches, newSearch].reverse()
     setPreviousSearches(newPreviousSearches);
 
     setVisible();

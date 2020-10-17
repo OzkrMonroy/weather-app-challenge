@@ -39,10 +39,28 @@ const Layout = (props) => {
       />
       <Head>
         <title>Weather App</title>
+        <meta name="description" content="Get weather information from anywhere"/>
+        <meta
+          property="og:url"
+          content="https://weather-app-ruddy.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Weather App"
+        />
+        <meta
+          property="og:description"
+          content="Get weather information from anywhere"
+        />
+        <meta
+          property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/producthunt-647c4.appspot.com/o/weatherScreenApp%2FLaptop.jpg?alt=media&token=99db63cb-aa36-49db-abdf-120ccea560c8"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap"
           rel="stylesheet"
-        ></link>
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>{props.children}</main>

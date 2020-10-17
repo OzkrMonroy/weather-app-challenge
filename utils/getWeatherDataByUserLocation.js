@@ -1,17 +1,20 @@
 const { initialErrorState } = require("./initialState");
 
-const getWeatherDataByUserLocation = (callback, handleError) => {
+const getWeatherDataByUserLocation = (getWeatherDataFunction, errorHandler, forceSearch = false) => {
   navigator.geolocation.getCurrentPosition(
     (position) => {
-      callback(position.coords.latitude, position.coords.longitude);
+      getWeatherDataFunction(position.coords.latitude, position.coords.longitude);
     },
     (error) => {
-      handleError({
+      if(forceSearch){
+        getWeatherDataFunction();
+      }
+      errorHandler({
         status: true,
         message: error.message
       })
       setTimeout(() => {
-        handleError(initialErrorState)
+        errorHandler(initialErrorState)
       }, 3000);
     }
   );

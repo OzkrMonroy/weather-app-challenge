@@ -19,20 +19,24 @@ const useGetFullWeatherData = () => {
         visibilityMI,
         pressureMB,
         icon,
+        windDir,
         tempC,
         tempF,
       } = weatherData.response.responses[0].response[0].periods[0];
 
       const fullLocationName = weatherData.response.responses[0].response[0].profile.tz;
-      const forecastsForFiveDays = weatherData.response.responses[1].response[0].periods;
-
+      const nameCity = fullLocationName.split("/")[1]
+      const locationName = nameCity.replace("_", " ");
+      
+      
       initialFullWeatherData.hightlightsToday[0].data = windSpeedMPH;
+      initialFullWeatherData.hightlightsToday[0].windDir = windDir;
       initialFullWeatherData.hightlightsToday[1].data = humidity;
       initialFullWeatherData.hightlightsToday[2].data = visibilityMI;
       initialFullWeatherData.hightlightsToday[3].data = pressureMB;
-
-      const nameCity = fullLocationName.split("/")[1]
-      const locationName = nameCity.replace("_", " ");
+      const hightlightsToday = initialFullWeatherData.hightlightsToday;
+      
+      const forecastsForFiveDays = weatherData.response.responses[1].response[0].periods;
 
       const todayWeather = {
         tempC,
@@ -40,7 +44,6 @@ const useGetFullWeatherData = () => {
         weather: weatherPrimary,
         icon,
       };
-      const hightlightsToday = initialFullWeatherData.hightlightsToday;
 
       setFullWeatherData({
         locationName,
@@ -48,6 +51,7 @@ const useGetFullWeatherData = () => {
         hightlightsToday,
         forecastsForFiveDays,
       });
+      
     } catch (error) {
       setError({
         status: true,
