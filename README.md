@@ -1,30 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather App Challenge
+
+This Web App allows you to obtain weather information based on your location or a search performed. By default, it shows the weather of a specific place, the request for your location will be made when you decide.
+
+Demo: [WeatherApp](https://weather-app-ruddy.vercel.app/)
+
+![Project screenshot][image]
+
+## Built with
+
+* [NextJS](https://nextjs.org/docs/getting-started)
+* [Emotion](https://emotion.sh/docs/introduction)
+* [Aerisweather API](https://www.aerisweather.com/support/docs/)
+
+## Features
+* Show a city weather by default.
+* You can search for city and country.
+* You can see weather of today and the next 5 days.
+* You can see the date and location of the weather.
+* You can see according to image for each type of weather.
+* You can see the min and max degree each day.
+* You can see wind status and wind direction.
+* You can see humidity percentage.
+* You can see visibility indicator.
+* You can see air pressure number.
+* You can request your current location weather.
+* You can convert temperature in Celcius to Fahrenheit and vice versa.
+
 
 ## Getting Started
 
-First, run the development server:
+First, clone this repository:
+
+```bash
+git clone https://github.com/OzkrMonroy/weather-app-challenge.git
+```
+
+Then, enter the folder and install the dependencies:
+```bash
+npm install
+```
+
+Finally, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can find the challenge [here](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[image]: https://firebasestorage.googleapis.com/v0/b/producthunt-647c4.appspot.com/o/weatherScreenApp%2FLaptop.jpg?alt=media&token=99db63cb-aa36-49db-abdf-120ccea560c8 "Project screenshot"
