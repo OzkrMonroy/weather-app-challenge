@@ -12,7 +12,6 @@ const useGetFullWeatherData = () => {
     try {
       let response = await fetch(url);
       let weatherInformation = await response.json();
-      console.log(weatherInformation);
       
       const fullLocationName = weatherInformation.timezone
       const nameCity = fullLocationName.split("/")[1]
@@ -30,7 +29,7 @@ const useGetFullWeatherData = () => {
       initialFullWeatherData.hightlightsToday[3].data = pressure;
       const hightlightsToday = initialFullWeatherData.hightlightsToday;
       
-      // const forecastsForFiveDays = weatherData.response.responses[1].response[0].periods;
+      const forecastsForFiveDays = weatherInformation.daily.filter((item, index) => index < 6).filter((item, index) => index !== 0);
 
       const todayWeather = {
         tempF,
@@ -38,10 +37,9 @@ const useGetFullWeatherData = () => {
         weather: weather[0].description,
         icon: weather[0].icon,
       };
-      console.log(locationName, hightlightsToday, todayWeather);
 
       setFullWeatherData({
-        ...fullWeatherData,
+        forecastsForFiveDays,
         locationName,
         todayWeather,
         hightlightsToday

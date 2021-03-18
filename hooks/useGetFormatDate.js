@@ -8,7 +8,7 @@ const useGetFormatDate = (date) => {
   }, [date]);
 
   const formatDate = () => {
-    const dateToFormat = date ? new Date(date) : new Date();
+    const dateToFormat = date ? new Date(date * 1000) : new Date();
     const dateArray = dateToFormat.toDateString().split(" ");
 
     const dateFormated = `${dateArray[0].toString()}. ${dateArray[2].toString()} ${dateArray[1].toString()}`

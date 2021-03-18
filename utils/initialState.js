@@ -26,11 +26,11 @@ export const initialFullWeatherData = {
     { title: "Wind status", data: 0, id: "windStatus", unit: "mb" },
   ],
   forecastsForFiveDays: [
-    {minTempC: 0, maxTempC: 0, minTempF: 0, maxTempF: 0},
-    {minTempC: 0, maxTempC: 0, minTempF: 0, maxTempF: 0},
-    {minTempC: 0, maxTempC: 0, minTempF: 0, maxTempF: 0},
-    {minTempC: 0, maxTempC: 0, minTempF: 0, maxTempF: 0},
-    {minTempC: 0, maxTempC: 0, minTempF: 0, maxTempF: 0},
+    {dt: new Date(), temp: {max: 0, min: 0}, weather: [{icon: ""}]},
+    {dt: new Date(), temp: {max: 0, min: 0}, weather: [{icon: ""}]},
+    {dt: new Date(), temp: {max: 0, min: 0}, weather: [{icon: ""}]},
+    {dt: new Date(), temp: {max: 0, min: 0}, weather: [{icon: ""}]},
+    {dt: new Date(), temp: {max: 0, min: 0}, weather: [{icon: ""}]},
   ]
 }
 
