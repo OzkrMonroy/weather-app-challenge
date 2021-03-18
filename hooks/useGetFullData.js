@@ -5,51 +5,46 @@ const useGetFullWeatherData = () => {
   const [fullWeatherData, setFullWeatherData] = useState(initialFullWeatherData);
   const [error, setError] = useState(initialErrorState)
 
-  const getFullWeatherDataFromApi = async ( longOrCityToSearch = "New York", latOrCountryToSearch = "USA" ) => {
-    const url = `https://api.aerisapi.com/batch/${longOrCityToSearch},${latOrCountryToSearch}?&format=json&client_id=${process.env.client_id}&client_secret=${process.env.client_secret}&requests=/conditions,/forecasts%3Ffilter=day%26limit=5%26from=tomorrow`;
+  const getFullWeatherDataFromApi = async (cityName = "New York") => {
+    let coords = await getCoordinates(cityName);
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${process.env.app_id}&exclude=minutely,hourly&lang=es`;
 
     try {
       let response = await fetch(url);
-      let weatherData = await response.json();
-
-      const {
-        weatherPrimary,
-        windSpeedMPH,
-        humidity,
-        visibilityMI,
-        pressureMB,
-        icon,
-        windDir,
-        tempC,
-        tempF,
-      } = weatherData.response.responses[0].response[0].periods[0];
-
-      const fullLocationName = weatherData.response.responses[0].response[0].profile.tz;
+      let weatherInformation = await response.json();
+      console.log(weatherInformation);
+      
+      const fullLocationName = weatherInformation.timezone
       const nameCity = fullLocationName.split("/")[1]
       const locationName = nameCity.replace("_", " ");
+
+      const {humidity, wind_speed, wind_deg , visibility, pressure, temp, weather} = weatherInformation.current;
+      const tempF = kelvinToFahrenheit(temp);
+      const tempC = kelvinToCelcius(temp);
       
       
-      initialFullWeatherData.hightlightsToday[0].data = windSpeedMPH;
-      initialFullWeatherData.hightlightsToday[0].windDir = windDir;
+      initialFullWeatherData.hightlightsToday[0].data = wind_speed;
+      initialFullWeatherData.hightlightsToday[0].windDir = wind_deg;
       initialFullWeatherData.hightlightsToday[1].data = humidity;
-      initialFullWeatherData.hightlightsToday[2].data = visibilityMI;
-      initialFullWeatherData.hightlightsToday[3].data = pressureMB;
+      initialFullWeatherData.hightlightsToday[2].data = visibility;
+      initialFullWeatherData.hightlightsToday[3].data = pressure;
       const hightlightsToday = initialFullWeatherData.hightlightsToday;
       
-      const forecastsForFiveDays = weatherData.response.responses[1].response[0].periods;
+      // const forecastsForFiveDays = weatherData.response.responses[1].response[0].periods;
 
       const todayWeather = {
-        tempC,
         tempF,
-        weather: weatherPrimary,
-        icon,
+        tempC,
+        weather: weather[0].description,
+        icon: weather[0].icon,
       };
+      console.log(locationName, hightlightsToday, todayWeather);
 
       setFullWeatherData({
+        ...fullWeatherData,
         locationName,
         todayWeather,
-        hightlightsToday,
-        forecastsForFiveDays,
+        hightlightsToday
       });
       
     } catch (error) {
@@ -62,6 +57,23 @@ const useGetFullWeatherData = () => {
       }, 4000);
     }
   };
+
+  const getCoordinates = async cityName => {
+    let coordinates;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.app_id}&lang=es`;
+
+    try {
+      let response = await fetch(url);
+      let weatherInformation = await response.json();
+      coordinates = weatherInformation.coord
+    } catch (error) {
+      console.log(error);
+    }
+    return coordinates;
+  }
+
+  const kelvinToFahrenheit = kelvin => 1.8*(kelvin - 273.15) + 32;
+  const kelvinToCelcius = kelvin => kelvin - 273;
 
   return {
     fullWeatherData,

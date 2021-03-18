@@ -42,7 +42,7 @@ const Layout = (props) => {
         <meta name="description" content="Get weather information from anywhere"/>
         <meta
           property="og:url"
-          content="https://weather-app-ruddy.vercel.app/"
+          content="https://weatherappchallenge.netlify.app/"
         />
         <meta property="og:type" content="website" />
         <meta
