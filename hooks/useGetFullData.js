@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { kelvinToFahrenheitAndCelcius } from "../utils/converterTemperature";
+import { formatLocationName, formatStringToCapitalize } from "../utils/formatString";
+import getForecasts from "../utils/getForecasts";
+import getHightLightsToday from "../utils/getHightLightsToday";
 import { initialErrorState, initialFullWeatherData } from "../utils/initialState";
 
 const useGetFullWeatherData = () => {
@@ -13,28 +17,19 @@ const useGetFullWeatherData = () => {
       let response = await fetch(url);
       let weatherInformation = await response.json();
       
-      const fullLocationName = weatherInformation.timezone
-      const nameCity = fullLocationName.split("/")[1]
-      const locationName = nameCity.replace("_", " ");
-
-      const {humidity, wind_speed, wind_deg , visibility, pressure, temp, weather} = weatherInformation.current;
-      const tempF = kelvinToFahrenheit(temp);
-      const tempC = kelvinToCelcius(temp);
+      const { temp, weather} = weatherInformation.current;
+      const locationName = formatLocationName(weatherInformation.timezone);
+      const weatherDescription = formatStringToCapitalize(weather[0].description);
+      const { tempF, tempC } = kelvinToFahrenheitAndCelcius(temp)
       
+      const hightlightsToday = getHightLightsToday(initialFullWeatherData, weatherInformation)
       
-      initialFullWeatherData.hightlightsToday[0].data = wind_speed;
-      initialFullWeatherData.hightlightsToday[0].windDir = wind_deg;
-      initialFullWeatherData.hightlightsToday[1].data = humidity;
-      initialFullWeatherData.hightlightsToday[2].data = visibility;
-      initialFullWeatherData.hightlightsToday[3].data = pressure;
-      const hightlightsToday = initialFullWeatherData.hightlightsToday;
-      
-      const forecastsForFiveDays = weatherInformation.daily.filter((item, index) => index < 6).filter((item, index) => index !== 0);
+      const forecastsForFiveDays = getForecasts(weatherInformation);
 
       const todayWeather = {
         tempF,
         tempC,
-        weather: weather[0].description,
+        weather: weatherDescription,
         icon: weather[0].icon,
       };
 
@@ -69,9 +64,6 @@ const useGetFullWeatherData = () => {
     }
     return coordinates;
   }
-
-  const kelvinToFahrenheit = kelvin => 1.8*(kelvin - 273.15) + 32;
-  const kelvinToCelcius = kelvin => kelvin - 273;
 
   return {
     fullWeatherData,

@@ -12,7 +12,7 @@ const ResumeWeather = ({ fullWeatherData, unitOption, getWeatherFunction, setErr
   const { formatedDate } = useGetFormatDate();
   const imageResource = getImageToShow(todayWeather.icon);
 
-  const currentTemp = todayWeather[`temp${unitOption}`].toFixed();
+  const currentTemp = todayWeather[`temp${unitOption}`];
   
   const showForm = () => {
     setIsFormVisible(!isFormVisible);

@@ -4,13 +4,11 @@ import getImageToShow from '../../../utils/getImageToShow';
 import { DailyWeatherCardContainer } from './Styles';
 
 const DailyWeatherCard = ({forecast, unitOption}) => {
-  const { formatedDate } = useGetFormatDate(forecast.dt);
-  const imageResource = getImageToShow(forecast.weather[0].icon);
+  const { formatedDate } = useGetFormatDate(forecast.date);
+  const imageResource = getImageToShow(forecast.icon);
 
-  // const minTemp = forecast[`minTemp${unitOption}`].toFixed();
-  // const maxTemp = forecast[`maxTemp${unitOption}`].toFixed();
-  const minTemp = forecast.temp.min.toFixed();
-  const maxTemp = forecast.temp.max.toFixed();
+  const minTemp = forecast[`minTemp${unitOption}`];
+  const maxTemp = forecast[`maxTemp${unitOption}`];
 
   return (
     <DailyWeatherCardContainer>
