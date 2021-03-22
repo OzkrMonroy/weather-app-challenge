@@ -1,13 +1,13 @@
-const { initialErrorState } = require("./initialState");
+import { initialErrorState } from './initialState';
 
-const getWeatherDataByUserLocation = (getWeatherDataFunction, errorHandler, forceSearch = false) => {
+const getWeatherDataByUserLocation = (getWeatherDataObj, errorHandler, forceSearch = false) => {
   navigator.geolocation.getCurrentPosition(
     (position) => {
-      getWeatherDataFunction(position.coords.latitude, position.coords.longitude);
+      getWeatherDataObj.byCoords(position.coords.latitude, position.coords.longitude);
     },
     (error) => {
       if(forceSearch){
-        getWeatherDataFunction();
+        getWeatherDataObj.byName();
       }
       errorHandler({
         status: true,

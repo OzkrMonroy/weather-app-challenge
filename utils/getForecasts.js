@@ -7,16 +7,15 @@ const getForecasts = weatherInformation => {
 
     const minTemp = kelvinToFahrenheitAndCelcius(temp.min);
     const maxTemp = kelvinToFahrenheitAndCelcius(temp.max);
-    console.log(minTemp, maxTemp, temp);
 
-  return {
-    date: dt,
-    icon: weather[0].icon,
-    minTempF: minTemp.tempF,
-    maxTempF: maxTemp.tempF,
-    minTempC: minTemp.tempC,
-    maxTempC: maxTemp.tempC
-  }
+    return {
+      date: dt,
+      icon: weather[0].icon,
+      minTempF: minTemp.tempF,
+      maxTempF: maxTemp.tempF,
+      minTempC: minTemp.tempC,
+      maxTempC: maxTemp.tempC
+    }
   })
 
   return forecastsForFiveDays;

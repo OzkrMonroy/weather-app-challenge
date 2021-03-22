@@ -7,11 +7,27 @@ import { initialErrorState, initialFullWeatherData } from "../utils/initialState
 
 const useGetFullWeatherData = () => {
   const [fullWeatherData, setFullWeatherData] = useState(initialFullWeatherData);
-  const [error, setError] = useState(initialErrorState)
+  const [error, setError] = useState(initialErrorState);
 
-  const getFullWeatherDataFromApi = async (cityName = "New York") => {
+  const byName = async (cityName = "New York") => {
     let coords = await getCoordinates(cityName);
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${process.env.app_id}&exclude=minutely,hourly&lang=es`;
+    try {
+      await getFullWeatherDataFromApi(coords.lat, coords.lon)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const byCoords = async (lat, lon) => {
+    try {
+      await getFullWeatherDataFromApi(lat, lon)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const getFullWeatherDataFromApi = async (lat, lon) => {
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${process.env.app_id}&exclude=minutely,hourly&lang=es`;
 
     try {
       let response = await fetch(url);
@@ -69,7 +85,7 @@ const useGetFullWeatherData = () => {
     fullWeatherData,
     error,
     setError,
-    getFullWeatherDataFromApi,
+    getFullWeatherDataFromApi: { byName, byCoords},
   };
 };
 

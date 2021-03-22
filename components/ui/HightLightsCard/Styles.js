@@ -56,58 +56,6 @@ export const CardFooter = styled.div`
     width: 17px;
     margin-right: .5rem;
     transition: transform 1s ease;
-    transform: rotate(-45deg);
-
-    &.N {
-      transform: rotate(-45deg);
-    }
-    &.NNE {
-      transform: rotate(-20deg);
-    }
-    &.NE {
-      transform: rotate(0deg);
-    }
-    &.ENE {
-      transform: rotate(20deg);
-    }
-    &.E {
-      transform: rotate(45deg);
-    }
-    &.ESE {
-      transform: rotate(65deg);
-    }
-    &.SE {
-      transform: rotate(85deg);
-    }
-    &.SSE {
-      transform: rotate(105deg);
-    }
-    &.S {
-      transform: rotate(135deg);
-    }
-    &.SSW {
-      transform: rotate(155deg);
-    }
-    &.SW {
-      transform: rotate(175deg);
-    }
-    &.WSW {
-      transform: rotate(195deg);
-    }
-    &.W {
-      transform: rotate(225deg);
-    }
-    &.WNW {
-      transform: rotate(245deg);
-    }
-    &.NW {
-      transform: rotate(265deg);
-    }
-    &.NNW {
-      transform: rotate(285deg);
-    }
-
-
-
+    transform: ${props => `rotate(${props.windDir}deg)`};
   }
 `

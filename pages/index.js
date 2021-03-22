@@ -8,10 +8,10 @@ import useGetFullWeatherData from "../hooks/useGetFullData";
 
 export default function Home() {
   const [unitOption, setUnitOption] = useState("C");
-  const {fullWeatherData, error, setError, getFullWeatherDataFromApi} = useGetFullWeatherData();
+  const {fullWeatherData, error, setError, getFullWeatherDataFromApi } = useGetFullWeatherData();
 
   useEffect(() => {
-    getFullWeatherDataFromApi()
+    getFullWeatherDataFromApi.byName()
   }, []);
 
   return (
