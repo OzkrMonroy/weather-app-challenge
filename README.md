@@ -2,7 +2,7 @@
 
 This Web App allows you to obtain weather information based on your location or a search performed. By default, it shows the weather of a specific place, the request for your location will be made when you decide.
 
-Demo: [WeatherApp](https://weather-app-ruddy.vercel.app/)
+Demo: [WeatherApp](weatherappchallenge.netlify.app/)
 
 ![Project screenshot][image]
 
