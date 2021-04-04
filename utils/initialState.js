@@ -10,6 +10,7 @@ export const initialFullWeatherData = {
     {
       title: "Wind status",
       windDir: "N/A",
+      windDirText: "N",
       data: 0,
       showWind: true,
       id: "windy",
@@ -23,7 +24,7 @@ export const initialFullWeatherData = {
       unit: "%",
     },
     { title: "Visibility", data: 0, id: "visibility", unit: "miles" },
-    { title: "Wind status", data: 0, id: "windStatus", unit: "mb" },
+    { title: "Air Pressure", data: 0, id: "airPressure", unit: "mb" },
   ],
   forecastsForFiveDays: [
     {date: new Date(), icon: "", minTempF: 0, maxTempF: 0, minTempC: 0, maxTempC: 0 },
