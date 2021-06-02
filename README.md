@@ -53,4 +53,4 @@ You can find the challenge [here](https://devchallenges.io/challenges/mM1UIenRhK
 
 
 
-[image]: https://firebasestorage.googleapis.com/v0/b/producthunt-647c4.appspot.com/o/weatherScreenApp%2FLaptop.jpg?alt=media&token=99db63cb-aa36-49db-abdf-120ccea560c8 "Project screenshot"
+[image]: https://firebasestorage.googleapis.com/v0/b/producthunt-647c4.appspot.com/o/AppsScreenShots%2FWeatherApp-min.jpg?alt=media&token=3acc8493-c8b1-466f-8f2c-53b041ebc38a "Project screenshot"
